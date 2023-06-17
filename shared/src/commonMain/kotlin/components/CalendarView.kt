@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
@@ -62,9 +64,27 @@ fun CalendarView() {
         // 绘制月份标题
         Text(
             text = firstDayOfMonth.month.toString(),
-            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
             modifier = Modifier.padding(8.dp)
         )
+        LazyVerticalGrid(columns = GridCells.Fixed(7)) {
+            items(7) { day ->
+                val dayOfWeek = DayOfWeek((day + 6) % 7 + 1).toString().substring(0, 3)
+
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                ) {
+                    Text(
+                        text = dayOfWeek,
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .padding(8.dp),
+                        style = MaterialTheme.typography.bodySmall.copy(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))
+                    )
+                }
+            }
+        }
 
         // 绘制日期格子
         LazyVerticalGrid(columns = GridCells.Fixed(7)) {
@@ -79,7 +99,7 @@ fun CalendarView() {
                         modifier = Modifier
                             .clip(shape = RoundedCornerShape(10))
                             .border(
-                                1.5.dp,
+                                1.2.dp,
                                 //judge is current day
                                 if (selectedDay == date
                                 ) MaterialTheme.colorScheme.primary else Color.Transparent,
