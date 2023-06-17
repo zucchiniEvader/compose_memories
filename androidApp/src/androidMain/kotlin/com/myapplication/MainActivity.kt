@@ -1,4 +1,4 @@
-package com.myapplication
+package xyz.yemingfu
 
 import MainView
 import android.os.Bundle

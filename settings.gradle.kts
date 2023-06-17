@@ -1,4 +1,4 @@
-rootProject.name = "MyApplication"
+rootProject.name = "compose_memories"
 
 include(":androidApp")
 include(":shared")
