@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import components.CalendarView
 import kotlinx.datetime.Clock
@@ -52,12 +53,6 @@ fun HomePage() {
     )
     println(totalDaysInMonth)
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        AnimatedVisibility(showImage) {
-            Image(
-                painterResource("compose-multiplatform.xml"),
-                null
-            )
-        }
         CalendarView()
         Box(
             modifier = Modifier.height(3.dp)

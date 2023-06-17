@@ -62,8 +62,8 @@ fun CalendarView() {
         // 绘制月份标题
         Text(
             text = firstDayOfMonth.month.toString(),
-            style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
-            modifier = Modifier.padding(vertical = 16.dp, horizontal = 8.dp)
+            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(8.dp)
         )
 
         // 绘制日期格子
@@ -79,7 +79,7 @@ fun CalendarView() {
                         modifier = Modifier
                             .clip(shape = RoundedCornerShape(10))
                             .border(
-                                1.dp,
+                                1.5.dp,
                                 //judge is current day
                                 if (selectedDay == date
                                 ) MaterialTheme.colorScheme.primary else Color.Transparent,

@@ -34,6 +34,8 @@ kotlin {
                 implementation(compose.components.resources)
                 implementation(compose.material3)
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("com.moriatsushi.insetsx:insetsx:0.1.0-alpha08")
+
             }
         }
         val androidMain by getting {
